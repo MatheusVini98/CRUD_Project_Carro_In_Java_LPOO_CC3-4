@@ -11,13 +11,13 @@ public class Validacao
     public void validarDadosCarro(List<String> dadosCarro)
     {
         this.mensagem = "";
-        this.validarIdCarro(dadosCarro.get(0)); //ID
-        this.validarFabricanteCarro(dadosCarro.get(1)); //Fabricante
-        this.validarModeloCarro(dadosCarro.get(2)); //Modelo    
-        this.validarCorCarro(dadosCarro.get(3)); //Cor
-        if (dadosCarro.get(4).length() < 5) //Ano
+        this.validarIdCarro(dadosCarro.get(0));                                 //ID
+        this.validarFabricanteCarro(dadosCarro.get(1));                         //Fabricante
+        this.validarModeloCarro(dadosCarro.get(2));                             //Modelo    
+        this.validarCorCarro(dadosCarro.get(3));                                //Cor
+        if (dadosCarro.get(4).length() < 3 || dadosCarro.get(4).length() > 5)   //Ano
             this.mensagem += "Ano inválido";
-        if (dadosCarro.get(5).length() < 10) //Valor
+        if (dadosCarro.get(5).length() < 2 || dadosCarro.get(5).length() > 10)  //Valor
             this.mensagem += "Valor Inválido";
     }
     
