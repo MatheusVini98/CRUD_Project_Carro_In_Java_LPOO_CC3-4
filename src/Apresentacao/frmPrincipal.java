@@ -88,7 +88,7 @@ public class frmPrincipal extends javax.swing.JDialog
 
     private void mniPFMEEActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniPFMEEActionPerformed
     {//GEN-HEADEREND:event_mniPFMEEActionPerformed
-        frmPesquisarFabricanteEditarExcluir frmPEE = new frmPesquisarFabricanteEditarExcluir(null,true);
+        frmPesquisarEditarExcluir frmPEE = new frmPesquisarEditarExcluir(null,true);
         frmPEE.setVisible(true);
     }//GEN-LAST:event_mniPFMEEActionPerformed
 
