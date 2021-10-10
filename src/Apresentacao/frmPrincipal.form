@@ -17,20 +17,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniCadastrarActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mniPFEE">
+            <MenuItem class="javax.swing.JMenuItem" name="mniPFMEE">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pesquisar Fabricante ,editar ou excluir"/>
+                <Property name="text" type="java.lang.String" value="Pesquisar Fabricante ou Modelo ,editar ou excluir"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniPFEEActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mniPMEE">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Pesquisar Modelo ,editar ou excluir"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniPMEEActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniPFMEEActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

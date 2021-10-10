@@ -5,6 +5,8 @@
  */
 package Apresentacao;
 
+import Modelo.Estaticos;
+
 /**
  *
  * @author Usuario
@@ -32,12 +34,12 @@ public class frmSelecao extends javax.swing.JDialog
     {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblSelecao = new javax.swing.JTable();
+        tblPesquisarCarro = new javax.swing.JTable();
         btnOK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        tblSelecao.setModel(new javax.swing.table.DefaultTableModel(
+        tblPesquisarCarro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
                 {null, null, null, null, null, null},
@@ -50,10 +52,24 @@ public class frmSelecao extends javax.swing.JDialog
                 "ID", "FABRICANTE", "MODELO", "COR", "ANO DE FABRICAÇÃO", "VALOR"
             }
         ));
-        tblSelecao.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(tblSelecao);
+        tblPesquisarCarro.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblPesquisarCarro.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                tblPesquisarCarroMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblPesquisarCarro);
 
         btnOK.setText("OK");
+        btnOK.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnOKActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,6 +94,22 @@ public class frmSelecao extends javax.swing.JDialog
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnOKActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnOKActionPerformed
+    {//GEN-HEADEREND:event_btnOKActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnOKActionPerformed
+
+    private void tblPesquisarCarroMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblPesquisarCarroMouseClicked
+    {//GEN-HEADEREND:event_tblPesquisarCarroMouseClicked
+        int linha = tblPesquisarCarro.getSelectedRow();
+        Estaticos.carro.setId((int) tblPesquisarCarro.getValueAt(linha, 0));
+        Estaticos.carro.setFabricante((String) tblPesquisarCarro.getValueAt(linha, 1));
+        Estaticos.carro.setModelo((String) tblPesquisarCarro.getValueAt(linha, 2));
+        Estaticos.carro.setCor((String) tblPesquisarCarro.getValueAt(linha, 3));
+        Estaticos.carro.setAnoFabricao((Integer) tblPesquisarCarro.getValueAt(linha, 4));
+        Estaticos.carro.setValor((Float) tblPesquisarCarro.getValueAt(linha, 5));
+    }//GEN-LAST:event_tblPesquisarCarroMouseClicked
 
     /**
      * @param args the command line arguments
@@ -140,6 +172,6 @@ public class frmSelecao extends javax.swing.JDialog
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOK;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblSelecao;
+    private javax.swing.JTable tblPesquisarCarro;
     // End of variables declaration//GEN-END:variables
 }

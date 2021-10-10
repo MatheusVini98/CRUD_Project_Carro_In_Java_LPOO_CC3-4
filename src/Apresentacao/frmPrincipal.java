@@ -34,8 +34,7 @@ public class frmPrincipal extends javax.swing.JDialog
         jMenuBar1 = new javax.swing.JMenuBar();
         mnuCarros = new javax.swing.JMenu();
         mniCadastrar = new javax.swing.JMenuItem();
-        mniPFEE = new javax.swing.JMenuItem();
-        mniPMEE = new javax.swing.JMenuItem();
+        mniPFMEE = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pessoas CRUD");
@@ -52,25 +51,15 @@ public class frmPrincipal extends javax.swing.JDialog
         });
         mnuCarros.add(mniCadastrar);
 
-        mniPFEE.setText("Pesquisar Fabricante ,editar ou excluir");
-        mniPFEE.addActionListener(new java.awt.event.ActionListener()
+        mniPFMEE.setText("Pesquisar Fabricante ou Modelo ,editar ou excluir");
+        mniPFMEE.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                mniPFEEActionPerformed(evt);
+                mniPFMEEActionPerformed(evt);
             }
         });
-        mnuCarros.add(mniPFEE);
-
-        mniPMEE.setText("Pesquisar Modelo ,editar ou excluir");
-        mniPMEE.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                mniPMEEActionPerformed(evt);
-            }
-        });
-        mnuCarros.add(mniPMEE);
+        mnuCarros.add(mniPFMEE);
 
         jMenuBar1.add(mnuCarros);
 
@@ -97,17 +86,11 @@ public class frmPrincipal extends javax.swing.JDialog
         frmC.setVisible(true);
     }//GEN-LAST:event_mniCadastrarActionPerformed
 
-    private void mniPFEEActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniPFEEActionPerformed
-    {//GEN-HEADEREND:event_mniPFEEActionPerformed
+    private void mniPFMEEActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniPFMEEActionPerformed
+    {//GEN-HEADEREND:event_mniPFMEEActionPerformed
         frmPesquisarFabricanteEditarExcluir frmPEE = new frmPesquisarFabricanteEditarExcluir(null,true);
         frmPEE.setVisible(true);
-    }//GEN-LAST:event_mniPFEEActionPerformed
-
-    private void mniPMEEActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mniPMEEActionPerformed
-    {//GEN-HEADEREND:event_mniPMEEActionPerformed
-        frmPesquisarModeloEditarExcluir frmPMEE = new frmPesquisarModeloEditarExcluir(null,true);
-        frmPMEE.setVisible(true);
-    }//GEN-LAST:event_mniPMEEActionPerformed
+    }//GEN-LAST:event_mniPFMEEActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,8 +154,7 @@ public class frmPrincipal extends javax.swing.JDialog
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem mniCadastrar;
-    private javax.swing.JMenuItem mniPFEE;
-    private javax.swing.JMenuItem mniPMEE;
+    private javax.swing.JMenuItem mniPFMEE;
     private javax.swing.JMenu mnuCarros;
     // End of variables declaration//GEN-END:variables
 }

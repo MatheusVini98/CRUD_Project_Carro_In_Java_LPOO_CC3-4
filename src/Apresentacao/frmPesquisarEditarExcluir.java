@@ -200,18 +200,34 @@ public class frmPesquisarFabricanteEditarExcluir extends javax.swing.JDialog
     private void btnPesquisarporfabricanteActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPesquisarporfabricanteActionPerformed
     {//GEN-HEADEREND:event_btnPesquisarporfabricanteActionPerformed
         Controle controle = new Controle();
-        Pessoa pessoa = controle.pesquisarPessoaPorId(txvID.getText());
-        if (controle.getMensagem().equals(""))
+        List<Carro>listaCarros = controle.pesquisarCarroPorFabricante(txvFabricante.getText());
+        if (listaCarros.size() == 0)
         {
-            txvFabricante.setText(pessoa.getNome());
-            txvModelo.setText(pessoa.getRg());
-            txvCor.setText(pessoa.getCpf());
+            JOptionPane.showMessageDialog(null, "Não existe registros com esta pesquisa");
         }
-        else
+        if (listaCarros.size() == 1)
         {
-            txvFabricante.setText("");
-            txvModelo.setText("");
-            txvCor.setText("");
+            txvID.setText(String.valueOf(listaCarros.get(0).getId()));
+            txvFabricante.setText(listaCarros.get(1).getFabricante());
+            txvModelo.setText(listaCarros.get(2).getModelo());
+            txvCor.setText(listaCarros.get(3).getCor());
+            txvAno.setText(listaCarros.get(4));
+            txvValor.setText(listaCarros.get(5).getValor());
+        }
+        if (listaCarros.size() >1)
+        {
+            Estaticos.listaCarro = listaCarros;
+            frmSelecao frmS = new frmSelecao(null,true);
+            frmS.setVisible(true);
+            txvID.setText(String.valueOf(Estaticos.carro.getId()));
+            txvFabricante.setText(String.valueOf(Estaticos.carro.getFabricante()));
+            txvModelo.setText(String.valueOf(Estaticos.carro.getModelo()));
+            txvCor.setText(String.valueOf(Estaticos.carro.getCor()));
+            txvAno.setText(String.valueOf(Estaticos.carro.getAnoFabricao()));
+            txvValor.setText(String.valueOf(Estaticos.carro.getValor()));
+        }
+        if (!controle.getMensagem().equals(""))
+        {
             JOptionPane.showMessageDialog(null, controle.getMensagem());
         }
     }//GEN-LAST:event_btnPesquisarporfabricanteActionPerformed
@@ -219,12 +235,13 @@ public class frmPesquisarFabricanteEditarExcluir extends javax.swing.JDialog
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnEditarActionPerformed
     {//GEN-HEADEREND:event_btnEditarActionPerformed
         Controle controle = new Controle();
-        List<String> dadosPessoa = new ArrayList<>();
-        dadosPessoa.add(txvID.getText());
-        dadosPessoa.add(txvFabricante.getText());
-        dadosPessoa.add(txvModelo.getText());
-        dadosPessoa.add(txvCor.getText());
-        controle.editarPessoa(dadosPessoa);
+        List<String> dadosCarro = new ArrayList<>();
+        dadosCarro.add(txvFabricante.getText());
+        dadosCarro.add(txvModelo.getText());
+        dadosCarro.add(txvCor.getText());
+        dadosCarro.add(txvAno.getText());
+        dadosCarro.add(txvValor.getText());
+        controle.editarCarros(dadosCarro);
         JOptionPane.showMessageDialog(null, controle.getMensagem());
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -236,7 +253,7 @@ public class frmPesquisarFabricanteEditarExcluir extends javax.swing.JDialog
                 "Exclusão", JOptionPane.YES_NO_OPTION);
         if (resp == JOptionPane.YES_OPTION)
         {
-            controle.excluirPessoa(txvID.getText());
+            controle.excluirCarro(txvID.getText());
             JOptionPane.showMessageDialog(null, controle.getMensagem());
             txvID.setText("");
             txvFabricante.setText("");
@@ -248,27 +265,31 @@ public class frmPesquisarFabricanteEditarExcluir extends javax.swing.JDialog
     private void btnPesquisarpormodeloActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPesquisarpormodeloActionPerformed
     {//GEN-HEADEREND:event_btnPesquisarpormodeloActionPerformed
         Controle controle = new Controle();
-        List<Pessoa>listaPessoas = controle.pesquisarPessoaPorNome(txvFabricante.getText());
-        if (listaPessoas.size() == 0)
+        List<Carro>listaCarros = controle.pesquisarCarroPorModelo(txvModelo.getText());
+        if (listaCarros.size() == 0)
         {
             JOptionPane.showMessageDialog(null, "Não existe registros com esta pesquisa");
         }
-        if (listaPessoas.size() == 1)
+        if (listaCarros.size() == 1)
         {
-            txvID.setText(String.valueOf(listaPessoas.get(0).getId()));
-            txvFabricante.setText(listaPessoas.get(0).getNome());
-            txvModelo.setText(listaPessoas.get(0).getRg());
-            txvCor.setText(listaPessoas.get(0).getCpf());
+            txvID.setText(String.valueOf(listaCarros.get(0).getId()));
+            txvFabricante.setText(listaCarros.get(0).getFabricante());
+            txvModelo.setText(listaCarros.get(0).getModelo());
+            txvCor.setText(listaCarros.get(0).getCor());
+            txvAno.setText(listaCarros.get(0).getAnoFabricao());
+            txvValor.setText(listaCarros.get(0).getValor());
         }
-        if (listaPessoas.size() >1)
+        if (listaCarros.size() >1)
         {
-            Estaticos.listaPessoas = listaPessoas;
+            Estaticos.listaCarro = listaCarros;
             frmSelecao frmS = new frmSelecao(null,true);
             frmS.setVisible(true);
-            txvID.setText(String.valueOf(Estaticos.pessoa.getId()));
-            txvFabricante.setText(String.valueOf(Estaticos.pessoa.getNome()));
-            txvModelo.setText(String.valueOf(Estaticos.pessoa.getRg()));
-            txvCor.setText(String.valueOf(Estaticos.pessoa.getCpf()));
+            txvID.setText(String.valueOf(Estaticos.carro.getId()));
+            txvFabricante.setText(String.valueOf(Estaticos.carro.getFabricante()));
+            txvModelo.setText(String.valueOf(Estaticos.carro.getModelo()));
+            txvCor.setText(String.valueOf(Estaticos.carro.getCor()));
+            txvAno.setText(String.valueOf(Estaticos.carro.getAnoFabricao()));
+            txvValor.setText(String.valueOf(Estaticos.carro.getValor()));
         }
         if (!controle.getMensagem().equals(""))
         {

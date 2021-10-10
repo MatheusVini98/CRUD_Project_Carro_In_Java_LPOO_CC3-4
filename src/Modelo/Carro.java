@@ -10,7 +10,7 @@ public class Carro
     private String fabricante;
     private String modelo;
     private String cor;
-    private int ano_fabricacao;
+    private int anoFabricao;
     private float valor;
 
     public int getId()
@@ -53,14 +53,14 @@ public class Carro
         this.cor = cor;
     }
 
-    public int getAno_fabricacao()
+    public int getAnoFabricao()
     {
-        return ano_fabricacao;
+        return anoFabricao;
     }
 
-    public void setAno_fabricacao(int ano_fabricacao)
+    public void setAnoFabricao(int anoFabricao)
     {
-        this.ano_fabricacao = ano_fabricacao;
+        this.anoFabricao = anoFabricao;
     }
 
     public float getValor()
