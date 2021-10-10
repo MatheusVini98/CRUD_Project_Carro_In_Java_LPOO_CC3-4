@@ -1,0 +1,14 @@
+create database CrudCarro;
+go
+use CrudCarro;
+go
+create table Carros
+(
+	id int primary key identity(1,1),
+	fabricante varchar(40),
+	modelo varchar(20),
+	cor varchar(20),
+	ano_fabricacao int,
+	valor float,
+)
+go
