@@ -21,7 +21,7 @@ public class CarroDAO
             Connection con = conexao.conectar();
             if (conexao.getMensagem().equals(""))
             {
-                String comSql = "Insert into Carros (fabricante, modelo, cor, anofabricacao, valor)"
+                String comSql = "Insert into Carros (fabricante, modelo, cor, ano_fabricacao, valor)"
                         + "values(?,?,?,?,?)";
                 PreparedStatement stmt = con.prepareStatement(comSql);
                 stmt.setString(1, carro.getFabricante());
@@ -55,8 +55,8 @@ public class CarroDAO
             if (conexao.getMensagem().equals(""))
             {
                 String comSql = "Update Carro "
-                        + "set fabricante = ?,"
-                        + "modelo = ?,"
+                        + "set fabricante = ?, "
+                        + "modelo = ?, "
                         + "cor = ? "
                         + "ano_fabricacao = ? "
                         + "valor = ? "
