@@ -5,7 +5,9 @@
  */
 package Apresentacao;
 
+import Modelo.Carro;
 import Modelo.Estaticos;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +23,7 @@ public class frmSelecao extends javax.swing.JDialog
     {
         super(parent, modal);
         initComponents();
+        preencherTabela();
     }
 
     /**
@@ -95,6 +98,22 @@ public class frmSelecao extends javax.swing.JDialog
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void preencherTabela()
+    {
+        DefaultTableModel modelo = (DefaultTableModel) tblPesquisarCarro.getModel();
+        modelo.setNumRows(0);
+        for (Carro c : Estaticos.listaCarro)
+        {
+            modelo.addRow(new Object[]{
+                c.getId(),
+                c.getFabricante(),
+                c.getModelo(),
+                c.getCor(),
+                c.getAnoFabricao(),
+                c.getValor()
+            });
+        }
+    }
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnOKActionPerformed
     {//GEN-HEADEREND:event_btnOKActionPerformed
         this.dispose();
