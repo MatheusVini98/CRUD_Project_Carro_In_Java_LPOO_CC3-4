@@ -5,6 +5,11 @@
  */
 package Apresentacao;
 
+import Modelo.Controle;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -31,21 +36,120 @@ public class frmCadastro extends javax.swing.JDialog
     private void initComponents()
     {
 
+        lblFabricante = new javax.swing.JLabel();
+        txvFabricante = new javax.swing.JTextField();
+        lblModelo = new javax.swing.JLabel();
+        txvModelo = new javax.swing.JTextField();
+        txvAno = new javax.swing.JTextField();
+        lblAno = new javax.swing.JLabel();
+        txvCor = new javax.swing.JTextField();
+        lblCor = new javax.swing.JLabel();
+        txvValor = new javax.swing.JTextField();
+        lblValor = new javax.swing.JLabel();
+        btnCadastrar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Carro");
+
+        lblFabricante.setText("Fabricante");
+
+        lblModelo.setText("Modelo");
+
+        lblAno.setText("Ano");
+
+        lblCor.setText("Cor");
+
+        lblValor.setText("Valor");
+
+        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblModelo)
+                            .addComponent(lblFabricante))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txvFabricante, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txvModelo, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblAno)
+                                    .addComponent(txvAno, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(48, 48, 48)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txvCor, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblCor))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblValor)
+                                    .addComponent(txvValor, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnCadastrar))))
+                        .addGap(30, 30, 30))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(lblFabricante)
+                .addGap(18, 18, 18)
+                .addComponent(txvFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblModelo)
+                .addGap(18, 18, 18)
+                .addComponent(txvModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCor)
+                            .addComponent(lblAno))
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txvAno, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txvCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblValor)
+                        .addGap(8, 8, 8)
+                        .addComponent(txvValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(btnCadastrar)
+                .addGap(23, 23, 23))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCadastrarActionPerformed
+    {//GEN-HEADEREND:event_btnCadastrarActionPerformed
+        List<String> dadosCarro = new ArrayList<>();
+        dadosCarro.add("0");
+        dadosCarro.add(txvFabricante.getText());    //string
+        dadosCarro.add(txvModelo.getText());        //string
+        dadosCarro.add(txvCor.getText());           //string
+        dadosCarro.add(txvAno.getText());           //int
+        dadosCarro.add(txvValor.getText());         //float
+        
+        
+        Controle controle = new Controle();
+        controle.cadastrarCarros(dadosCarro);
+        JOptionPane.showMessageDialog(null, controle.getMensagem());
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,5 +210,16 @@ public class frmCadastro extends javax.swing.JDialog
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCadastrar;
+    private javax.swing.JLabel lblAno;
+    private javax.swing.JLabel lblCor;
+    private javax.swing.JLabel lblFabricante;
+    private javax.swing.JLabel lblModelo;
+    private javax.swing.JLabel lblValor;
+    private javax.swing.JTextField txvAno;
+    private javax.swing.JTextField txvCor;
+    private javax.swing.JTextField txvFabricante;
+    private javax.swing.JTextField txvModelo;
+    private javax.swing.JTextField txvValor;
     // End of variables declaration//GEN-END:variables
 }
