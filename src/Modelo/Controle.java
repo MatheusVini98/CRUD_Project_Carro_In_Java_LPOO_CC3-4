@@ -25,7 +25,7 @@ public class Controle
             carro.setFabricante(dadosCarro.get(1));
             carro.setModelo(dadosCarro.get(2));
             carro.setCor(dadosCarro.get(3));
-            carro.setAno_fabricacao(Integer.parseInt(dadosCarro.get(4)));
+            carro.setAnoFabricao(Integer.parseInt(dadosCarro.get(4)));
             carro.setValor(Float.parseFloat(dadosCarro.get(5)));
             CarroDAO carroDAO = new CarroDAO();
             carroDAO.cadastrarCarro(carro);
@@ -49,7 +49,7 @@ public class Controle
             carro.setFabricante(dadosCarro.get(1));
             carro.setModelo(dadosCarro.get(2));
             carro.setCor(dadosCarro.get(3));
-            carro.setAno_fabricacao(Integer.parseInt(dadosCarro.get(4)));
+            carro.setAnoFabricao(Integer.parseInt(dadosCarro.get(4)));
             carro.setValor(Float.parseFloat(dadosCarro.get(5)));
             CarroDAO carroDAO = new CarroDAO();
             carroDAO.editarCarro(carro);
@@ -81,7 +81,7 @@ public class Controle
             this.mensagem = validacao.getMensagem();
         }
     }
-            
+               
     public List<Carro> pesquisarCarroPorFabricante(String nomeFabricante)
     {
         this.mensagem ="";

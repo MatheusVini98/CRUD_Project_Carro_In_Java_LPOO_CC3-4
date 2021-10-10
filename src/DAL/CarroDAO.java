@@ -21,13 +21,13 @@ public class CarroDAO
             Connection con = conexao.conectar();
             if (conexao.getMensagem().equals(""))
             {
-                String comSql = "Insert into Carros (fabricante, modelo, cor, ano_fabricacao, valor)"
+                String comSql = "Insert into Carros (fabricante, modelo, cor, anofabricacao, valor)"
                         + "values(?,?,?,?,?)";
                 PreparedStatement stmt = con.prepareStatement(comSql);
                 stmt.setString(1, carro.getFabricante());
                 stmt.setString(2, carro.getModelo());
                 stmt.setString(3, carro.getCor());
-                stmt.setInt(4, carro.getAno_fabricacao());
+                stmt.setInt(4, carro.getAnoFabricao());
                 stmt.setFloat(5, carro.getValor());
                 stmt.execute();
                 conexao.desconectar();
@@ -65,7 +65,7 @@ public class CarroDAO
                 stmt.setString(1, carro.getFabricante());
                 stmt.setString(2, carro.getModelo());
                 stmt.setString(3, carro.getCor());
-                stmt.setInt(4, carro.getAno_fabricacao());
+                stmt.setInt(4, carro.getAnoFabricao());
                 stmt.setFloat(5, carro.getValor());
                 stmt.setInt(6, carro.getId());
                 stmt.execute();
@@ -119,7 +119,7 @@ public class CarroDAO
             this.mensagem = "Erro de gravação no BD";
         }
     }
-
+    
     public List<Carro> pesquisarCarroPorFabricante(Carro carro)
     {
         this.mensagem = "";
@@ -140,7 +140,7 @@ public class CarroDAO
                     carroLista.setFabricante(resultset.getString("fabricante"));
                     carroLista.setModelo(resultset.getString("modelo"));
                     carroLista.setCor(resultset.getString("cor"));
-                    carroLista.setAno_fabricacao(resultset.getInt("ano_fabricacao"));
+                    carroLista.setAnoFabricao(resultset.getInt("ano_fabricacao"));
                     carroLista.setValor(resultset.getFloat("valor"));
                     listaCarros.add(carroLista);
                 }
@@ -180,7 +180,7 @@ public class CarroDAO
                     carroLista.setFabricante(resultset.getString("fabricante"));
                     carroLista.setModelo(resultset.getString("modelo"));
                     carroLista.setCor(resultset.getString("cor"));
-                    carroLista.setAno_fabricacao(resultset.getInt("ano_fabricacao"));
+                    carroLista.setAnoFabricao(resultset.getInt("ano_fabricacao"));
                     carroLista.setValor(resultset.getFloat("valor"));
                     listaCarros.add(carroLista);
                 }
