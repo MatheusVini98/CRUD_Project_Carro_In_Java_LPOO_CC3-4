@@ -1,4 +1,4 @@
-# Trabalho1 ALPOO -> Crud Carro
+# Trabalho1 - Crud Carro
 
 ## 👷‍♂️ Como Rodar
 
