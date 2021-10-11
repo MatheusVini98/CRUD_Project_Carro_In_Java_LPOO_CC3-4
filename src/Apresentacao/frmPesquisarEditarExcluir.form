@@ -33,42 +33,48 @@
                       <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblFabricante" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblID" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblModelo" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="lblAno" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="txvAno" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txvCor" pref="103" max="32767" attributes="0"/>
-                                  <Component id="lblCor" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblID" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblModelo" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="lblAno" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="txvAno" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txvCor" max="32767" attributes="0"/>
+                                          <Component id="lblCor" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="txvModelo" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="txvFabricante" alignment="1" max="32767" attributes="0"/>
                               </Group>
+                              <EmptySpace min="107" pref="107" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="txvModelo" alignment="1" max="32767" attributes="0"/>
-                          <Component id="txvFabricante" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="txvID" min="-2" pref="69" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="267" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="107" pref="107" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnPesquisarPorId" max="32767" attributes="0"/>
                           <Component id="btnPesquisarpormodelo" alignment="1" max="32767" attributes="0"/>
                           <Component id="btnPesquisarporfabricante" alignment="1" max="32767" attributes="0"/>
                           <Component id="txvValor" alignment="1" max="32767" attributes="0"/>
                           <Component id="lblValor" min="-2" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblFabricante" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txvID" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
@@ -81,8 +87,11 @@
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Component id="lblID" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="txvID" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txvID" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPesquisarPorId" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="lblFabricante" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -96,7 +105,7 @@
                   <Component id="txvModelo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnPesquisarpormodelo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblValor" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblCor" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -195,6 +204,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="R$"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPesquisarPorId">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pesquisar Por Id"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarPorIdActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

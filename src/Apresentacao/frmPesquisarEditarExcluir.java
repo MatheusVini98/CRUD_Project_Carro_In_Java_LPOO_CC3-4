@@ -54,6 +54,7 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
         lblValor = new javax.swing.JLabel();
         txvAno = new javax.swing.JTextField();
         txvValor = new javax.swing.JTextField();
+        btnPesquisarPorId = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pesquisar, Editar e Excluir");
@@ -108,6 +109,15 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
 
         txvValor.setText("R$");
 
+        btnPesquisarPorId.setText("Pesquisar Por Id");
+        btnPesquisarPorId.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnPesquisarPorIdActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,33 +130,37 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEditar))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(lblFabricante)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblID)
-                            .addComponent(lblModelo)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblAno)
-                                        .addGap(104, 104, 104))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txvAno)
-                                        .addGap(57, 57, 57)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txvCor, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                                    .addComponent(lblCor)))
-                            .addComponent(txvModelo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txvFabricante, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(107, 107, 107)
+                                    .addComponent(lblID)
+                                    .addComponent(lblModelo)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblAno)
+                                                .addGap(104, 104, 104))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(txvAno)
+                                                .addGap(57, 57, 57)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txvCor)
+                                            .addComponent(lblCor)))
+                                    .addComponent(txvModelo, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txvFabricante, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(107, 107, 107))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txvID, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(267, 267, 267)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnPesquisarPorId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnPesquisarpormodelo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnPesquisarporfabricante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txvValor, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblValor)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFabricante, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txvID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(lblValor))))
                 .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
@@ -155,8 +169,10 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
                 .addGap(16, 16, 16)
                 .addComponent(lblID)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txvID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txvID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisarPorId))
+                .addGap(21, 21, 21)
                 .addComponent(lblFabricante)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -168,7 +184,7 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txvModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisarpormodelo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblValor)
                     .addComponent(lblCor)
@@ -192,7 +208,7 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
     private void btnPesquisarporfabricanteActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPesquisarporfabricanteActionPerformed
     {//GEN-HEADEREND:event_btnPesquisarporfabricanteActionPerformed
         Controle controle = new Controle();
-        List<Carro>listaCarros = controle.pesquisarCarroPorFabricante(txvFabricante.getText());
+        List<Carro> listaCarros = controle.pesquisarCarroPorFabricante(txvFabricante.getText());
         if (listaCarros.size() == 0)
         {
             JOptionPane.showMessageDialog(null, "Não existe registros com esta pesquisa");
@@ -206,10 +222,10 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
             txvAno.setText(String.valueOf(listaCarros.get(0).getAnoFabricao()));
             txvValor.setText(String.valueOf(listaCarros.get(0).getValor()));
         }
-        if (listaCarros.size() >1)
+        if (listaCarros.size() > 1)
         {
             Estaticos.listaCarro = listaCarros;
-            frmSelecao frmS = new frmSelecao(null,true);
+            frmSelecao frmS = new frmSelecao(null, true);
             frmS.setVisible(true);
             txvID.setText(String.valueOf(Estaticos.carro.getId()));
             txvFabricante.setText(String.valueOf(Estaticos.carro.getFabricante()));
@@ -228,6 +244,7 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
     {//GEN-HEADEREND:event_btnEditarActionPerformed
         Controle controle = new Controle();
         List<String> dadosCarro = new ArrayList<>();
+        dadosCarro.add(txvID.getText());
         dadosCarro.add(txvFabricante.getText());
         dadosCarro.add(txvModelo.getText());
         dadosCarro.add(txvCor.getText());
@@ -240,8 +257,8 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnExcluirActionPerformed
     {//GEN-HEADEREND:event_btnExcluirActionPerformed
         Controle controle = new Controle();
-        
-        int resp = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esta pessoa ?",
+
+        int resp = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esta carro ?",
                 "Exclusão", JOptionPane.YES_NO_OPTION);
         if (resp == JOptionPane.YES_OPTION)
         {
@@ -251,13 +268,19 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
             txvFabricante.setText("");
             txvModelo.setText("");
             txvCor.setText("");
+            txvAno.setText("");
+            txvValor.setText("");
+        }
+        else if (resp == JOptionPane.NO_OPTION)
+        {
+            JOptionPane.showMessageDialog(null, "ufa!");
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnPesquisarpormodeloActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPesquisarpormodeloActionPerformed
     {//GEN-HEADEREND:event_btnPesquisarpormodeloActionPerformed
         Controle controle = new Controle();
-        List<Carro>listaCarros = controle.pesquisarCarroPorModelo(txvModelo.getText());
+        List<Carro> listaCarros = controle.pesquisarCarroPorModelo(txvModelo.getText());
         if (listaCarros.size() == 0)
         {
             JOptionPane.showMessageDialog(null, "Não existe registros com esta pesquisa");
@@ -271,10 +294,10 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
             txvAno.setText(String.valueOf(listaCarros.get(0).getAnoFabricao()));
             txvValor.setText(String.valueOf(listaCarros.get(0).getValor()));
         }
-        if (listaCarros.size() >1)
+        if (listaCarros.size() > 1)
         {
             Estaticos.listaCarro = listaCarros;
-            frmSelecao frmS = new frmSelecao(null,true);
+            frmSelecao frmS = new frmSelecao(null, true);
             frmS.setVisible(true);
             txvID.setText(String.valueOf(Estaticos.carro.getId()));
             txvFabricante.setText(String.valueOf(Estaticos.carro.getFabricante()));
@@ -288,6 +311,29 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
             JOptionPane.showMessageDialog(null, controle.getMensagem());
         }
     }//GEN-LAST:event_btnPesquisarpormodeloActionPerformed
+
+    private void btnPesquisarPorIdActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPesquisarPorIdActionPerformed
+    {//GEN-HEADEREND:event_btnPesquisarPorIdActionPerformed
+        Controle controle = new Controle();
+        Carro carro = controle.pesquisarCarroPorId(txvID.getText());
+        if (controle.getMensagem().equals(""))
+        {
+            txvFabricante.setText(carro.getFabricante());
+            txvModelo.setText(carro.getModelo());
+            txvCor.setText(carro.getCor());
+            txvAno.setText(String.valueOf(carro.getAnoFabricao()));
+            txvValor.setText(String.valueOf(carro.getValor()));
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, controle.getMensagem());
+            txvFabricante.setText("");
+            txvModelo.setText("");
+            txvCor.setText("");
+            txvAno.setText("");
+            txvValor.setText("");
+        }
+    }//GEN-LAST:event_btnPesquisarPorIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -353,6 +399,7 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnPesquisarPorId;
     private javax.swing.JButton btnPesquisarporfabricante;
     private javax.swing.JButton btnPesquisarpormodelo;
     private javax.swing.JLabel lblAno;
