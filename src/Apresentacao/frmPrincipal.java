@@ -37,7 +37,7 @@ public class frmPrincipal extends javax.swing.JDialog
         mniPFMEE = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pessoas CRUD");
+        setTitle("Carro CRUD");
 
         mnuCarros.setText("Carros");
 

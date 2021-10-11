@@ -201,9 +201,9 @@
     <Component class="javax.swing.JTextField" name="txvAno">
     </Component>
     <Component class="javax.swing.JTextField" name="txvValor">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="R$"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txvValorActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnPesquisarPorId">
       <Properties>
