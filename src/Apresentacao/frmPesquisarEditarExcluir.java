@@ -8,7 +8,6 @@ package Apresentacao;
 import Modelo.Controle;
 import Modelo.Estaticos;
 import Modelo.Carro;
-import Modelo.Validacao;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
