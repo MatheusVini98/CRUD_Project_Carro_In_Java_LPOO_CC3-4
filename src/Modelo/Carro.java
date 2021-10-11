@@ -1,11 +1,8 @@
 package Modelo;
 
-/**
- *
- * @author MatheusVinícius
- */
 public class Carro
 {
+    
     private int id;
     private String fabricante;
     private String modelo;
