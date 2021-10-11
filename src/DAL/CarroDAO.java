@@ -54,11 +54,11 @@ public class CarroDAO
             Connection con = conexao.conectar();
             if (conexao.getMensagem().equals(""))
             {
-                String comSql = "Update Carro "
+                String comSql = "Update Carros "
                         + "set fabricante = ?, "
                         + "modelo = ?, "
-                        + "cor = ? "
-                        + "ano_fabricacao = ? "
+                        + "cor = ?, "
+                        + "ano_fabricacao = ?, "
                         + "valor = ? "
                         + "where id = ?";
                 PreparedStatement stmt = con.prepareStatement(comSql);
@@ -80,6 +80,7 @@ public class CarroDAO
         catch (Exception e)
         {
 //            this.mensagem = e.getMessage();
+            System.out.println(e);
             this.mensagem = "Erro de gravação no BD";
         }
     }
@@ -92,14 +93,14 @@ public class CarroDAO
             Connection con = conexao.conectar();
             if (conexao.getMensagem().equals(""))
             {
-                carro = (Carro) this.pesquisarCarroPorFabricante(carro);
+                carro = this.pesquisarCarroPorId(carro);
                 if(carro.getFabricante() == null || carro.getFabricante().equals(""))
                 {
                     this.mensagem = "Não existe carro para excluir";
                 }
                 else
                 {
-                    String comSql = "Delete from Carros where id = ?";
+                    String comSql = "delete from Carros where id = ?";
                     PreparedStatement stmt = con.prepareStatement(comSql);
                     stmt.setInt(1, carro.getId());
                     stmt.execute();
@@ -115,9 +116,50 @@ public class CarroDAO
         }
         catch (Exception e)
         {
+            System.out.println(e);
 //            this.mensagem = e.getMessage();
             this.mensagem = "Erro de gravação no BD";
         }
+    }
+    
+    public Carro pesquisarCarroPorId(Carro carro)
+    {
+        this.mensagem = "";
+        try
+        {
+            Connection con = conexao.conectar();
+            if (conexao.getMensagem().equals(""))
+            {
+                String comSql = "select * from Carros where id = ?";
+                PreparedStatement stmt = con.prepareStatement(comSql);
+                stmt.setInt(1, carro.getId());
+                ResultSet resultSet = stmt.executeQuery();                      //quando se tem resposta
+                if (resultSet.next())                                           //se conseguir dar next significa que conseguiu um id
+                {
+                    carro.setFabricante(resultSet.getString("fabricante"));
+                    carro.setModelo(resultSet.getString("modelo"));
+                    carro.setCor(resultSet.getString("cor"));
+                    carro.setAnoFabricao(resultSet.getInt("ano_fabricacao"));
+                    carro.setValor(resultSet.getFloat("valor"));
+                }
+                else
+                {
+                    this.mensagem = "não existe este ID";
+                }
+                conexao.desconectar();
+            }
+            else
+            {
+                this.mensagem = conexao.getMensagem();
+            }
+
+        }
+        catch (Exception e)
+        {
+            this.mensagem = "erro de leitura no BD";                            // para o cliente
+            //this.mensagem = e.getMessage();                                   //para desenvolvimento
+        }
+        return carro;
     }
     
     public List<Carro> pesquisarCarroPorFabricante(Carro carro)
@@ -145,7 +187,7 @@ public class CarroDAO
                     listaCarros.add(carroLista);
                 }
                 conexao.desconectar();
-//            this.mensagem = "Pessoa cadastrada com sucesso!";                
+//            this.mensagem = "Carro cadastrada com sucesso!";                
             }
             else
             {
@@ -171,7 +213,7 @@ public class CarroDAO
             {
                 String comSql = "select * from carros where modelo like ?";
                 PreparedStatement stmt = con.prepareStatement(comSql);
-                stmt.setString(2, carro.getModelo()+ "%");
+                stmt.setString(1, carro.getModelo()+ "%");
                 ResultSet resultset = stmt.executeQuery();
                 while (resultset.next())
                 {
