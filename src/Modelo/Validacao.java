@@ -45,6 +45,8 @@ public class Validacao
         {
             this.mensagem += "O Nome da Fabricante deve ter de 3 a 40 caracteres \n";
         }
+        else
+            this.mensagem = "";
     }
 
     public void validarModeloCarro(String modelo)
@@ -53,6 +55,8 @@ public class Validacao
         {
             this.mensagem += "O Nome do Modelo deve ter de 3 a 20 caracteres \n";
         }
+        else
+            this.mensagem = "";
     }
 
     public void validarCorCarro(String cor)
@@ -62,6 +66,8 @@ public class Validacao
         {
             this.mensagem += "O Nome da Cor deve ter de 3 a 15 caracteres \n";
         }
+        else
+            this.mensagem = "";
     }
 
     public String getMensagem()

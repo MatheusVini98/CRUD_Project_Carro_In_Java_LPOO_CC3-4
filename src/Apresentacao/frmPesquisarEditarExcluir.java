@@ -337,6 +337,7 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
         else
         {
             JOptionPane.showMessageDialog(null, controle.getMensagem());
+            txvID.setText("");
             txvFabricante.setText("");
             txvModelo.setText("");
             txvCor.setText("");
