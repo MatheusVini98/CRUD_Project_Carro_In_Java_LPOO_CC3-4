@@ -90,29 +90,30 @@ public class CarroDAO
         this.mensagem = "";
         try
         {
-            Connection con = conexao.conectar();
-            if (conexao.getMensagem().equals(""))
+            carro = this.pesquisarCarroPorId(carro);
+            if (carro.getFabricante() == null || carro.getFabricante().equals(""))
             {
-                carro = this.pesquisarCarroPorId(carro);
-                if(carro.getFabricante() == null || carro.getFabricante().equals(""))
-                {
-                    this.mensagem = "Não existe carro para excluir";
-                }
-                else
+                this.mensagem = "Não existe carro para excluir";
+            }
+            else
+            {
+                Connection con = conexao.conectar();
+                if (conexao.getMensagem().equals(""))
                 {
                     String comSql = "delete from Carros where id = ?";
                     PreparedStatement stmt = con.prepareStatement(comSql);
                     stmt.setInt(1, carro.getId());
                     stmt.execute();
                     conexao.desconectar();
-                    this.mensagem = "Carro excluido com sucesso!";                    
+                    this.mensagem = "Carro excluido com sucesso!";
+
                 }
-               
+                else
+                {
+                    this.mensagem = conexao.getMensagem();
+                }
             }
-            else
-            {
-                this.mensagem = conexao.getMensagem();
-            }
+
         }
         catch (Exception e)
         {
@@ -121,7 +122,7 @@ public class CarroDAO
             this.mensagem = "Erro de gravação no BD";
         }
     }
-    
+
     public Carro pesquisarCarroPorId(Carro carro)
     {
         this.mensagem = "";
@@ -161,7 +162,7 @@ public class CarroDAO
         }
         return carro;
     }
-    
+
     public List<Carro> pesquisarCarroPorFabricante(Carro carro)
     {
         this.mensagem = "";
@@ -173,7 +174,7 @@ public class CarroDAO
             {
                 String comSql = "select * from carros where fabricante like ?";
                 PreparedStatement stmt = con.prepareStatement(comSql);
-                stmt.setString(1, carro.getFabricante()+ "%");
+                stmt.setString(1, carro.getFabricante() + "%");
                 ResultSet resultset = stmt.executeQuery();
                 while (resultset.next())
                 {
@@ -201,8 +202,8 @@ public class CarroDAO
         }
         return listaCarros;
     }
-    
-        public List<Carro> pesquisarCarroPorModelo(Carro carro)
+
+    public List<Carro> pesquisarCarroPorModelo(Carro carro)
     {
         this.mensagem = "";
         List<Carro> listaCarros = new ArrayList<>();
@@ -213,7 +214,7 @@ public class CarroDAO
             {
                 String comSql = "select * from carros where modelo like ?";
                 PreparedStatement stmt = con.prepareStatement(comSql);
-                stmt.setString(1, carro.getModelo()+ "%");
+                stmt.setString(1, carro.getModelo() + "%");
                 ResultSet resultset = stmt.executeQuery();
                 while (resultset.next())
                 {
@@ -240,7 +241,7 @@ public class CarroDAO
         }
         return listaCarros;
     }
-        
+
     public String getMensagem()
     {
         return mensagem;

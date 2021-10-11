@@ -107,7 +107,13 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
 
         lblValor.setText("Valor");
 
-        txvValor.setText("R$");
+        txvValor.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txvValorActionPerformed(evt);
+            }
+        });
 
         btnPesquisarPorId.setText("Pesquisar Por Id");
         btnPesquisarPorId.addActionListener(new java.awt.event.ActionListener()
@@ -209,9 +215,15 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
     {//GEN-HEADEREND:event_btnPesquisarporfabricanteActionPerformed
         Controle controle = new Controle();
         List<Carro> listaCarros = controle.pesquisarCarroPorFabricante(txvFabricante.getText());
-        if (listaCarros.size() == 0)
+        if (listaCarros.size() == 0 || !controle.getMensagem().equals(""))
         {
             JOptionPane.showMessageDialog(null, "Não existe registros com esta pesquisa");
+            txvID.setText("");
+            txvFabricante.setText("");
+            txvModelo.setText("");
+            txvCor.setText("");
+            txvAno.setText("");
+            txvValor.setText("");
         }
         if (listaCarros.size() == 1)
         {
@@ -233,10 +245,6 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
             txvCor.setText(String.valueOf(Estaticos.carro.getCor()));
             txvAno.setText(String.valueOf(Estaticos.carro.getAnoFabricao()));
             txvValor.setText(String.valueOf(Estaticos.carro.getValor()));
-        }
-        if (!controle.getMensagem().equals(""))
-        {
-            JOptionPane.showMessageDialog(null, controle.getMensagem());
         }
     }//GEN-LAST:event_btnPesquisarporfabricanteActionPerformed
 
@@ -281,9 +289,15 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
     {//GEN-HEADEREND:event_btnPesquisarpormodeloActionPerformed
         Controle controle = new Controle();
         List<Carro> listaCarros = controle.pesquisarCarroPorModelo(txvModelo.getText());
-        if (listaCarros.size() == 0)
+        if (listaCarros.size() == 0 || !controle.getMensagem().equals(""))
         {
             JOptionPane.showMessageDialog(null, "Não existe registros com esta pesquisa");
+            txvID.setText("");
+            txvFabricante.setText("");
+            txvModelo.setText("");
+            txvCor.setText("");
+            txvAno.setText("");
+            txvValor.setText("");
         }
         if (listaCarros.size() == 1)
         {
@@ -305,10 +319,6 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
             txvCor.setText(String.valueOf(Estaticos.carro.getCor()));
             txvAno.setText(String.valueOf(Estaticos.carro.getAnoFabricao()));
             txvValor.setText(String.valueOf(Estaticos.carro.getValor()));
-        }
-        if (!controle.getMensagem().equals(""))
-        {
-            JOptionPane.showMessageDialog(null, controle.getMensagem());
         }
     }//GEN-LAST:event_btnPesquisarpormodeloActionPerformed
 
@@ -334,6 +344,11 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
             txvValor.setText("");
         }
     }//GEN-LAST:event_btnPesquisarPorIdActionPerformed
+
+    private void txvValorActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txvValorActionPerformed
+    {//GEN-HEADEREND:event_txvValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txvValorActionPerformed
 
     /**
      * @param args the command line arguments

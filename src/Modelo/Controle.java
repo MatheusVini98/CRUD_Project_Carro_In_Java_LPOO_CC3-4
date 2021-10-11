@@ -1,9 +1,5 @@
 package Modelo;
 
-/**
- *
- * @author MatheusVinícius
- */
 import DAL.CarroDAO;
 import java.util.ArrayList;
 import java.util.List;
@@ -152,5 +148,4 @@ public class Controle
     {
         this.mensagem = mensagem;
     }
-
 }
