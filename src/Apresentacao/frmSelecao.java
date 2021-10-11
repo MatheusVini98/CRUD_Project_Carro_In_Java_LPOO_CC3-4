@@ -5,7 +5,9 @@
  */
 package Apresentacao;
 
+import Modelo.Carro;
 import Modelo.Estaticos;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +23,7 @@ public class frmSelecao extends javax.swing.JDialog
     {
         super(parent, modal);
         initComponents();
+        preencherTabela();
     }
 
     /**
@@ -86,15 +89,32 @@ public class frmSelecao extends javax.swing.JDialog
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnOK)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void preencherTabela()
+    {
+        DefaultTableModel modelo = (DefaultTableModel) tblPesquisarCarro.getModel();
+        modelo.setNumRows(0);
+        for (Carro c : Estaticos.listaCarro)
+        {
+            modelo.addRow(new Object[]{
+                c.getId(),
+                c.getFabricante(),
+                c.getModelo(),
+                c.getCor(),
+                c.getAnoFabricao(),
+                c.getValor()
+            });
+        }
+    }
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnOKActionPerformed
     {//GEN-HEADEREND:event_btnOKActionPerformed
         this.dispose();

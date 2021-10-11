@@ -4,15 +4,15 @@ package Modelo;
  *
  * @author MatheusVinícius
  */
-
 import DAL.CarroDAO;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Controle
 {
+
     public String mensagem;
-    
+
     public void cadastrarCarros(List<String> dadosCarro)
     {
         this.mensagem = "";
@@ -36,7 +36,7 @@ public class Controle
             this.mensagem = validacao.getMensagem();
         }
     }
-    
+
     public void editarCarros(List<String> dadosCarro)
     {
         this.mensagem = "";
@@ -59,17 +59,16 @@ public class Controle
         {
             this.mensagem = validacao.getMensagem();
         }
-    
-        
+
     }
-     
+
     public void excluirCarro(String numeroId)
     {
         this.mensagem = "";
         Validacao validacao = new Validacao();
         validacao.validarIdCarro(numeroId);
         Carro carro = new Carro();
-        if(validacao.getMensagem().equals(""))
+        if (validacao.getMensagem().equals(""))
         {
             CarroDAO carroDAO = new CarroDAO();
             carro.setId(validacao.getId());
@@ -81,10 +80,30 @@ public class Controle
             this.mensagem = validacao.getMensagem();
         }
     }
-               
+
+    public Carro pesquisarCarroPorId(String numeroId)
+    {
+        this.mensagem = "";
+        Validacao validacao = new Validacao();
+        validacao.validarIdCarro(numeroId);
+        Carro pessoa = new Carro();
+        if (validacao.getMensagem().equals(""))
+        {
+            pessoa.setId(validacao.getId());
+            CarroDAO pessoaDAO = new CarroDAO();
+            pessoa = pessoaDAO.pesquisarCarroPorId(pessoa);
+            this.mensagem = pessoaDAO.getMensagem();
+        }
+        else
+        {
+            this.mensagem = validacao.getMensagem();
+        }
+        return pessoa;
+    }
+
     public List<Carro> pesquisarCarroPorFabricante(String nomeFabricante)
     {
-        this.mensagem ="";
+        this.mensagem = "";
         Validacao validacao = new Validacao();
         validacao.validarFabricanteCarro(nomeFabricante);
         Carro carro = new Carro();
@@ -102,10 +121,10 @@ public class Controle
         }
         return listaCarros;
     }
-            
+
     public List<Carro> pesquisarCarroPorModelo(String nomeModelo)
     {
-        this.mensagem ="";
+        this.mensagem = "";
         Validacao validacao = new Validacao();
         validacao.validarModeloCarro(nomeModelo);
         Carro carro = new Carro();
@@ -130,9 +149,8 @@ public class Controle
     }
 
     public void setMensagem(String mensagem)
-    {        
+    {
         this.mensagem = mensagem;
     }
 
-    
 }
