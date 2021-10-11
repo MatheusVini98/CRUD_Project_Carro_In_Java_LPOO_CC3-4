@@ -149,6 +149,11 @@ public class frmCadastro extends javax.swing.JDialog
         Controle controle = new Controle();
         controle.cadastrarCarros(dadosCarro);
         JOptionPane.showMessageDialog(null, controle.getMensagem());
+        txvFabricante.setText("");
+        txvModelo.setText("");
+        txvAno.setText("");
+        txvCor.setText("");
+        txvValor.setText("");
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
