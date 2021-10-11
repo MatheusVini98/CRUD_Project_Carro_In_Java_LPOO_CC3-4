@@ -15,13 +15,14 @@ public class Validacao
         this.validarFabricanteCarro(dadosCarro.get(1));                         //Fabricante
         this.validarModeloCarro(dadosCarro.get(2));                             //Modelo    
         this.validarCorCarro(dadosCarro.get(3));                                //Cor
-        if (dadosCarro.get(4).length() < 3 || dadosCarro.get(4).length() > 5)   //Ano
+        
+        if (dadosCarro.get(4).length() < 3 || dadosCarro.get(4).length() > 4)   //Ano
         {
-            this.mensagem += "Ano inválido";
+            this.mensagem += "Ano inválido \n";
         }
         if (dadosCarro.get(5).length() < 2 || dadosCarro.get(5).length() > 10)  //Valor
         {
-            this.mensagem += "Valor Inválido";
+            this.mensagem += "Valor Inválido \n";
         }
     }
 
@@ -40,30 +41,26 @@ public class Validacao
 
     public void validarFabricanteCarro(String fabricante)
     {
-        this.mensagem = "";
-        if (fabricante.length() < 3
-                || fabricante.length() > 40) //Nome
+        if (fabricante.length() < 3 || fabricante.length() > 40)                //fabricante ERROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
         {
-            this.mensagem += "O Nome da Fabricante deve ter de 3 a 40 caracteres";
+            this.mensagem += "O Nome da Fabricante deve ter de 3 a 40 caracteres \n";
         }
     }
 
     public void validarModeloCarro(String modelo)
     {
-        this.mensagem = "";
-        if (modelo.length() < 2 || modelo.length() > 20) //Nome
+        if (modelo.length() < 3 || modelo.length() > 20)                        //modelo
         {
-            this.mensagem += "O Nome do Modelo deve ter de 2 a 20 caracteres";
+            this.mensagem += "O Nome do Modelo deve ter de 3 a 20 caracteres \n";
         }
     }
 
-    public void validarCorCarro(String modelo)
+    public void validarCorCarro(String cor)
     {
-        this.mensagem = "";
-        if (modelo.length() < 3
-                || modelo.length() > 15) //Nome
+        if (cor.length() < 3 || cor.length() > 15)                              //cor
+        
         {
-            this.mensagem += "O Nome da Cor deve ter de 3 a 15 caracteres";
+            this.mensagem += "O Nome da Cor deve ter de 3 a 15 caracteres \n";
         }
     }
 
