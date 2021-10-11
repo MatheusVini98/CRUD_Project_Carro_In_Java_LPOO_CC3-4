@@ -8,6 +8,8 @@ package Apresentacao;
 import Modelo.Controle;
 import Modelo.Estaticos;
 import Modelo.Carro;
+import Modelo.Validacao;
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -211,19 +213,23 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ShowMessageAndClearTxv(Component component, Object message)
+    {
+        JOptionPane.showMessageDialog(component, message);
+        txvID.setText("");
+        txvFabricante.setText("");
+        txvModelo.setText("");
+        txvCor.setText("");
+        txvAno.setText("");
+        txvValor.setText("");
+    }
     private void btnPesquisarporfabricanteActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPesquisarporfabricanteActionPerformed
     {//GEN-HEADEREND:event_btnPesquisarporfabricanteActionPerformed
         Controle controle = new Controle();
         List<Carro> listaCarros = controle.pesquisarCarroPorFabricante(txvFabricante.getText());
         if (listaCarros.size() == 0 || !controle.getMensagem().equals(""))
         {
-            JOptionPane.showMessageDialog(null, "Não existe registros com esta pesquisa");
-            txvID.setText("");
-            txvFabricante.setText("");
-            txvModelo.setText("");
-            txvCor.setText("");
-            txvAno.setText("");
-            txvValor.setText("");
+            ShowMessageAndClearTxv(null, "Não existe registros com esta pesquisa");
         }
         if (listaCarros.size() == 1)
         {
@@ -250,39 +256,58 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnEditarActionPerformed
     {//GEN-HEADEREND:event_btnEditarActionPerformed
+
         Controle controle = new Controle();
-        List<String> dadosCarro = new ArrayList<>();
-        dadosCarro.add(txvID.getText());
-        dadosCarro.add(txvFabricante.getText());
-        dadosCarro.add(txvModelo.getText());
-        dadosCarro.add(txvCor.getText());
-        dadosCarro.add(txvAno.getText());
-        dadosCarro.add(txvValor.getText());
-        controle.editarCarros(dadosCarro);
-        JOptionPane.showMessageDialog(null, controle.getMensagem());
+        Carro PesquisaId = controle.pesquisarCarroPorId(txvID.getText());
+
+        if (PesquisaId.equals("") || !controle.getMensagem().equals(""))
+        {
+            ShowMessageAndClearTxv(null, "Não existe registros com esta pesquisa");
+        }
+        else
+        {
+            List<String> dadosCarro = new ArrayList<>();
+            dadosCarro.add(txvID.getText());
+            dadosCarro.add(txvFabricante.getText());
+            dadosCarro.add(txvModelo.getText());
+            dadosCarro.add(txvCor.getText());
+            dadosCarro.add(txvAno.getText());
+            dadosCarro.add(txvValor.getText());
+            controle.editarCarros(dadosCarro);
+            JOptionPane.showMessageDialog(null, controle.getMensagem());
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnExcluirActionPerformed
     {//GEN-HEADEREND:event_btnExcluirActionPerformed
         Controle controle = new Controle();
+        Carro PesquisaId = controle.pesquisarCarroPorId(txvID.getText());
 
-        int resp = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esta carro ?",
-                "Exclusão", JOptionPane.YES_NO_OPTION);
-        if (resp == JOptionPane.YES_OPTION)
+        if (PesquisaId.equals("") || !controle.getMensagem().equals(""))
         {
-            controle.excluirCarro(txvID.getText());
-            JOptionPane.showMessageDialog(null, controle.getMensagem());
-            txvID.setText("");
-            txvFabricante.setText("");
-            txvModelo.setText("");
-            txvCor.setText("");
-            txvAno.setText("");
-            txvValor.setText("");
+            ShowMessageAndClearTxv(null, "Não existe registros com esta pesquisa");
         }
-        else if (resp == JOptionPane.NO_OPTION)
+        else
         {
-            JOptionPane.showMessageDialog(null, "ufa!");
+            int resp = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir este carro ?",
+                    "Exclusão", JOptionPane.YES_NO_OPTION);
+            if (resp == JOptionPane.YES_OPTION)
+            {
+                controle.excluirCarro(txvID.getText());
+                JOptionPane.showMessageDialog(null, controle.getMensagem());
+                txvID.setText("");
+                txvFabricante.setText("");
+                txvModelo.setText("");
+                txvCor.setText("");
+                txvAno.setText("");
+                txvValor.setText("");
+            }
+            else if (resp == JOptionPane.NO_OPTION)
+            {
+                JOptionPane.showMessageDialog(null, "ufa!");
+            }
         }
+
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnPesquisarpormodeloActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnPesquisarpormodeloActionPerformed
@@ -291,13 +316,7 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
         List<Carro> listaCarros = controle.pesquisarCarroPorModelo(txvModelo.getText());
         if (listaCarros.size() == 0 || !controle.getMensagem().equals(""))
         {
-            JOptionPane.showMessageDialog(null, "Não existe registros com esta pesquisa");
-            txvID.setText("");
-            txvFabricante.setText("");
-            txvModelo.setText("");
-            txvCor.setText("");
-            txvAno.setText("");
-            txvValor.setText("");
+            ShowMessageAndClearTxv(null, "Não existe registros com esta pesquisa");
         }
         if (listaCarros.size() == 1)
         {
@@ -336,13 +355,7 @@ public class frmPesquisarEditarExcluir extends javax.swing.JDialog
         }
         else
         {
-            JOptionPane.showMessageDialog(null, controle.getMensagem());
-            txvID.setText("");
-            txvFabricante.setText("");
-            txvModelo.setText("");
-            txvCor.setText("");
-            txvAno.setText("");
-            txvValor.setText("");
+            ShowMessageAndClearTxv(null, "Não existe registros com esta pesquisa");
         }
     }//GEN-LAST:event_btnPesquisarPorIdActionPerformed
 
